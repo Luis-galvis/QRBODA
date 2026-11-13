@@ -12,7 +12,7 @@
   <meta property="og:type" content="website">
   <meta property="og:title" content="📸 Álbum de Fotos en Vivo • Boda Fernando & Luisa Fernanda">
   <meta property="og:description"
-    content="Toma fotos con tu celular o súbelas desde tu galería para guardarlas directamente en nuestro álbum oficial de Google Drive.">
+    content="Toma fotos con tu celular o súbelas desde tu galería para nuestro álbum oficial de boda.">
   <meta property="og:image" content="assets/og_preview.jpg">
   <meta name="theme-color" content="#3a472c">
 
@@ -35,39 +35,6 @@
 
   <!-- Partículas Ambientales Románticas -->
   <div id="ambient-particles"></div>
-
-  <!-- Barra Superior de Utilidades (QR para Mesas + Carpeta Drive + Config Novios) -->
-  <nav class="top-utility-bar" aria-label="Acciones rápidas del álbum">
-    <button type="button" class="pill-utility-btn" onclick="openQRModal()">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-        <rect x="3" y="3" width="7" height="7"></rect>
-        <rect x="14" y="3" width="7" height="7"></rect>
-        <rect x="14" y="14" width="7" height="7"></rect>
-        <rect x="3" y="14" width="7" height="7"></rect>
-      </svg>
-      <span>Código QR Mesas</span>
-    </button>
-
-    <div style="display: flex; gap: 6px;">
-      <a href="https://drive.google.com/drive/folders/1FlD83FFBaYZme3_D9JTev4CPBjKWV2ci?usp=sharing" target="_blank"
-        rel="noopener" class="pill-utility-btn" title="Abrir carpeta oficial en Google Drive">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-          <path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path>
-        </svg>
-        <span>Drive</span>
-      </a>
-
-      <button type="button" class="pill-utility-btn" onclick="openDriveSetupModal()" title="Panel de Novios y Conexión Drive">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-          <circle cx="12" cy="12" r="3"></circle>
-          <path
-            d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z">
-          </path>
-        </svg>
-        <span>Novios</span>
-      </button>
-    </div>
-  </nav>
 
   <!-- Contenedor Principal de la Tarjeta Fotográfica -->
   <main class="wedding-viewport">
@@ -120,24 +87,19 @@
         </svg>
       </div>
 
-      <!-- 2. ESTUDIO DE CÁMARA & SUBIDA DIRECTA A GOOGLE DRIVE -->
+      <!-- 2. ESTUDIO DE CÁMARA & GUARDADO AUTOMÁTICO INSTANTÁNEO -->
       <section class="camera-studio-box" aria-label="Tomar o subir fotos de la boda">
         <span class="studio-badge">✨ Recuerdos en Tiempo Real ✨</span>
         <h2 class="studio-title">¡Toma una Foto para los Novios!</h2>
         <p class="studio-desc">
-          Toma una foto ahora mismo con tu celular o elige tus favoritas de la galería. Se guardarán automáticamente en
-          nuestra carpeta oficial de <strong>Google Drive</strong>.
+          Al tomar tu foto o elegirla de tu galería se guardará <strong>automáticamente</strong> al instante en el álbum
+          oficial de nuestra boda.
         </p>
 
-        <!-- Campos de Nombre y Dedicatoria -->
+        <!-- Solo Campo de Mensaje / Dedicatoria (Opcional) -->
         <div class="guest-inputs-grid">
           <div class="input-field-group">
-            <label for="guestNameInput">👤 Tu Nombre o Familia (Opcional):</label>
-            <input type="text" id="guestNameInput" class="wedding-input"
-              placeholder="Ej: Familia Gómez, Amigos de los Novios...">
-          </div>
-          <div class="input-field-group">
-            <label for="guestCaptionInput">💌 Mensaje o Dedicatoria en la Foto (Opcional):</label>
+            <label for="guestCaptionInput">💌 Mensaje o Dedicatoria para los Novios (Opcional):</label>
             <input type="text" id="guestCaptionInput" class="wedding-input"
               placeholder="Ej: ¡Que vivan los novios! Los queremos mucho 🥂">
           </div>
@@ -148,7 +110,7 @@
         <input type="file" id="nativeSelfieInput" accept="image/*" capture="user" style="display: none;">
         <input type="file" id="galleryFilesInput" accept="image/*" multiple style="display: none;">
 
-        <!-- Botones de Captura Principal -->
+        <!-- Botones de Captura Principal (Guardado Automático al Tomar) -->
         <div class="capture-buttons-stack">
           <!-- Botón 1: Abrir Cámara del Celular Directamente -->
           <button type="button" class="btn-camera-primary" onclick="triggerNativeCamera()">
@@ -183,9 +145,17 @@
 
         <!-- Opción de Sello / Marco Conmemorativo de la Boda -->
         <label class="frame-toggle-row" for="chkWeddingWatermark">
-          <input type="checkbox" id="chkWeddingWatermark" checked onchange="refreshStagedPreviews()">
+          <input type="checkbox" id="chkWeddingWatermark" checked>
           <span>✨ Incluir sello dorado: <strong>“Fernando & Luisa • 14.11.2026”</strong></span>
         </label>
+
+        <!-- Barra de Progreso Rápida Automática -->
+        <div class="upload-progress-box" id="uploadProgressBox">
+          <div class="progress-track">
+            <div class="progress-fill" id="uploadProgressFill"></div>
+          </div>
+          <div class="progress-status-text" id="uploadProgressText">Guardando tu foto automáticamente...</div>
+        </div>
 
         <!-- ==============================================================
              CABINA DE CÁMARA EN VIVO (WEBRTC VIEWFINDER)
@@ -211,7 +181,8 @@
           </div>
 
           <div class="camera-controls-bar">
-            <button type="button" class="btn-cam-Option" onclick="flipLiveCamera()" title="Cambiar entre cámara frontal y trasera">
+            <button type="button" class="btn-cam-Option" onclick="flipLiveCamera()"
+              title="Cambiar entre cámara frontal y trasera">
               🔄 Voltear
             </button>
 
@@ -230,79 +201,26 @@
           </button>
         </div>
 
-        <!-- ==============================================================
-             ÁREA DE PREVISUALIZACIÓN Y GUARDADO EN GOOGLE DRIVE
-             ============================================================== -->
-        <div class="preview-staging-area" id="previewStagingArea">
-          <div class="staging-header">
-            <span class="staging-count-label" id="stagingCountLabel">1 Foto lista para guardar</span>
-            <button type="button" class="btn-clear-staging" onclick="clearStagedPhotos()">Limpiar todo</button>
-          </div>
-
-          <div class="staging-photos-grid" id="stagingPhotosGrid">
-            <!-- Miniaturas generadas dinámicamente -->
-          </div>
-
-          <button type="button" class="btn-upload-drive" id="btnUploadToDrive" onclick="uploadStagedPhotosToDrive()">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
-              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
-              <polyline points="17 8 12 3 7 8"></polyline>
-              <line x1="12" y1="3" x2="12" y2="15"></line>
-            </svg>
-            <span id="btnUploadText">☁️ Guardar Foto en Google Drive de la Boda</span>
-          </button>
-
-          <!-- Barra de Progreso -->
-          <div class="upload-progress-box" id="uploadProgressBox">
-            <div class="progress-track">
-              <div class="progress-fill" id="uploadProgressFill"></div>
-            </div>
-            <div class="progress-status-text" id="uploadProgressText">Guardando recuerdo en el álbum oficial...</div>
-          </div>
-        </div>
-
-        <!-- Banner de Éxito -->
+        <!-- Banner de Éxito Automático -->
         <div class="upload-success-banner" id="uploadSuccessBanner">
           <div class="success-icon-ring">
             <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
               <polyline points="20 6 9 17 4 12"></polyline>
             </svg>
           </div>
-          <h4>¡Gracias por compartir este recuerdo!</h4>
+          <h4>¡Foto guardada automáticamente!</h4>
           <p id="uploadSuccessDetail">
-            Tu foto ya quedó guardada en el álbum oficial de la boda de Fernando & Luisa Fernanda.
+            Tu recuerdo ya está en el álbum oficial y en el mural en vivo de Fernando & Luisa Fernanda.
           </p>
           <div style="display: flex; gap: 8px; justify-content: center; flex-wrap: wrap;">
             <button type="button" class="pill-utility-btn" onclick="triggerNativeCamera()">
               📸 Tomar otra foto
             </button>
-            <a href="https://drive.google.com/drive/folders/1FlD83FFBaYZme3_D9JTev4CPBjKWV2ci?usp=sharing"
-              target="_blank" rel="noopener" class="pill-utility-btn">
-              📂 Ver Carpeta Google Drive
-            </a>
           </div>
         </div>
       </section>
 
-      <!-- 3. TARJETA DE ACCESO DIRECTO A LA CARPETA DE GOOGLE DRIVE -->
-      <section class="drive-folder-card" aria-label="Carpeta oficial de Google Drive">
-        <div class="drive-folder-info">
-          <div class="drive-folder-tag">Respaldo Oficial • Google Drive</div>
-          <div class="drive-folder-title">Carpeta de Fotos de la Boda</div>
-          <div class="drive-folder-sub">Todas las fotos tomadas aquí se almacenan para Fernando & Luisa Fernanda.</div>
-        </div>
-        <a href="https://drive.google.com/drive/folders/1FlD83FFBaYZme3_D9JTev4CPBjKWV2ci?usp=sharing" target="_blank"
-          rel="noopener" class="btn-open-drive">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
-            <polyline points="15 3 21 3 21 9"></polyline>
-            <line x1="10" y1="14" x2="21" y2="3"></line>
-          </svg>
-          <span>Abrir Google Drive</span>
-        </a>
-      </section>
-
-      <!-- 4. MURAL FOTOGRÁFICO EN VIVO DE LA BODA -->
+      <!-- 3. MURAL FOTOGRÁFICO EN VIVO DE LA BODA (SOLO MURAL PARA INVITADOS) -->
       <section class="live-gallery-section" id="liveGallerySection">
         <span class="section-label">Recuerdos Compartidos</span>
         <h3 class="section-title">Mural en Vivo de la Boda</h3>
@@ -320,27 +238,18 @@
         </div>
       </section>
 
-      <!-- 5. PIE DE TARJETA CON SELLO DE LACRE OFICIAL -->
+      <!-- 4. PIE DE TARJETA CON SELLO DE LACRE OFICIAL -->
       <footer class="card-footer-farewell">
         <img src="assets/wax_seal.png" alt="Sello de Lacre F & L" class="footer-wax-seal">
         <div class="farewell-text">¡Gracias por ser parte de nuestra historia!</div>
         <div class="farewell-subtext">Fernando & Luisa Fernanda • 14.11.2026</div>
-
-        <div style="margin-top: 16px; display: flex; gap: 8px; justify-content: center; flex-wrap: wrap;">
-          <button type="button" class="pill-utility-btn" onclick="openQRModal()">
-            📱 Ver / Imprimir Tarjeta QR para Mesas
-          </button>
-          <a href="tarjeta-qr.html" class="pill-utility-btn">
-            🖨️ Versión Imprimible A4 / Mesas
-          </a>
-        </div>
       </footer>
 
     </article>
   </main>
 
   <!-- ==========================================================================
-       MODAL 1: CÓDIGO QR OFICIAL Y TARJETA IMPRIMIBLE PARA LAS MESAS
+       MODAL: CÓDIGO QR OFICIAL Y TARJETA IMPRIMIBLE PARA LAS MESAS (ACCESO ?qr=true)
        ========================================================================== -->
   <div class="wedding-modal-overlay" id="qrModalOverlay">
     <div class="wedding-modal-card">
@@ -350,16 +259,18 @@
         <span class="section-label">Listo para Imprimir o Compartir</span>
         <h3 class="section-title" style="font-size: 1.5rem;">Código QR de la Boda</h3>
         <p style="font-size: 0.8rem; color: var(--color-text-muted);">
-          Cuando los invitados escaneen este QR con la cámara de su celular, entrarán directo a tomar fotos para su
-          carpeta de Google Drive.
+          Cuando los invitados escaneen este QR con la cámara de su celular, entrarán directo a tomar fotos.
         </p>
       </div>
 
       <!-- Tarjeta Poster QR de Lujo -->
       <div class="printable-qr-poster" id="printableQrPoster">
         <div class="wedding-subtitle" style="font-size: 0.65rem; letter-spacing: 3px;">Álbum Fotográfico Oficial</div>
-        <div style="font-family: var(--font-serif); font-size: 1.75rem; font-weight: 700; color: var(--color-olive-dark); line-height: 1.15;">
-          Fernando <span style="font-family: var(--font-script); color: var(--color-gold-primary); font-size: 1.9rem;">&</span> Luisa Fernanda
+        <div
+          style="font-family: var(--font-serif); font-size: 1.75rem; font-weight: 700; color: var(--color-olive-dark); line-height: 1.15;">
+          Fernando <span
+            style="font-family: var(--font-script); color: var(--color-gold-primary); font-size: 1.9rem;">&</span> Luisa
+          Fernanda
         </div>
         <div style="font-size: 0.72rem; color: var(--color-text-muted); margin-top: 2px;">
           Sábado, 14 de Noviembre de 2026 • Ibagué, Tolima
@@ -369,7 +280,8 @@
           <div id="qrcodeContainer"></div>
         </div>
 
-        <div style="font-family: var(--font-serif); font-size: 1.15rem; font-weight: 700; color: var(--color-olive-dark);">
+        <div
+          style="font-family: var(--font-serif); font-size: 1.15rem; font-weight: 700; color: var(--color-olive-dark);">
           📸 ¡Escanea y Toma tus Fotos!
         </div>
         <p style="font-size: 0.76rem; color: var(--color-text-muted); max-width: 280px; margin: 4px auto 0;">
@@ -387,14 +299,12 @@
             Copiar
           </button>
         </div>
-        <small style="display: block; font-size: 0.7rem; color: var(--color-text-muted); margin-top: 4px;">
-          💡 Al subir esta página a Vercel, el QR detecta automáticamente tu dominio real, o puedes escribirlo arriba.
-        </small>
       </div>
 
       <!-- Botones de Descarga del QR -->
       <div style="display: flex; flex-direction: column; gap: 8px;">
-        <button type="button" class="btn-camera-primary" onclick="downloadLuxuryQrCardPNG()" style="padding: 13px 16px; font-size: 0.9rem;">
+        <button type="button" class="btn-camera-primary" onclick="downloadLuxuryQrCardPNG()"
+          style="padding: 13px 16px; font-size: 0.9rem;">
           🖼️ Descargar Tarjeta QR Completa (PNG Alta Calidad)
         </button>
         <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px;">
@@ -410,76 +320,7 @@
   </div>
 
   <!-- ==========================================================================
-       MODAL 2: PANEL DE NOVIOS & CONEXIÓN DIRECTA CON LA CARPETA GOOGLE DRIVE
-       ========================================================================== -->
-  <div class="wedding-modal-overlay" id="driveSetupModalOverlay">
-    <div class="wedding-modal-card">
-      <button type="button" class="modal-close-btn" onclick="closeDriveSetupModal()" aria-label="Cerrar">✕</button>
-
-      <div style="text-align: center; margin-bottom: 14px;">
-        <span class="section-label">Configuración de Anfitriones</span>
-        <h3 class="section-title" style="font-size: 1.45rem;">Conexión con Google Drive</h3>
-        <p style="font-size: 0.78rem; color: var(--color-text-muted);">
-          Carpeta destino vinculada:<br>
-          <a href="https://drive.google.com/drive/folders/1FlD83FFBaYZme3_D9JTev4CPBjKWV2ci?usp=sharing" target="_blank"
-            rel="noopener" style="color: var(--color-olive-primary); font-weight: 700; word-break: break-all;">
-            drive.google.com/drive/folders/1FlD83FFBaYZme3_D9JTev4CPBjKWV2ci
-          </a>
-        </p>
-      </div>
-
-      <div style="background: var(--color-olive-wash); border: 1px solid var(--color-olive-subtle); border-radius: 12px; padding: 14px; margin-bottom: 14px; font-size: 0.8rem; color: var(--color-text-main); line-height: 1.45;">
-        <div style="font-weight: 700; color: var(--color-olive-dark); margin-bottom: 6px;">
-          ✅ Doble Respaldo Activo Automático:
-        </div>
-        <p style="margin-bottom: 8px;">
-          1. <strong>Álbum en la Nube en Vivo (Activo ya mismo):</strong> Todas las fotos que tomen los invitados se guardan al instante en el servidor de la boda y aparecen en el mural sin pedirles iniciar sesión.
-        </p>
-        <p>
-          2. <strong>Envío Directo a tu Carpeta Google Drive (Sin login para invitados):</strong> Como Google exige autorización del dueño de la carpeta para escribir archivos sin que el invitado tenga cuenta Google, activa en 1 minuto el puente oficial de Google Apps Script:
-        </p>
-      </div>
-
-      <!-- Paso a Paso Rápido de 1 Minuto -->
-      <div style="background: #fff; border: 1px solid rgba(197, 160, 89, 0.5); border-radius: 12px; padding: 14px; margin-bottom: 14px; font-size: 0.78rem;">
-        <div style="font-weight: 700; color: var(--color-gold-deep); margin-bottom: 8px; text-transform: uppercase; letter-spacing: 1px;">
-          ⚡ Activar puente en tu Google Drive (1 sola vez):
-        </div>
-        <ol style="padding-left: 18px; display: flex; flex-direction: column; gap: 6px; color: var(--color-text-main);">
-          <li>Haz clic en <strong>“Copiar Código Google Apps Script”</strong> abajo (ya tiene el ID de tu carpeta <code>1FlD83FFBaYZme3_D9JTev4CPBjKWV2ci</code>).</li>
-          <li>Abre <a href="https://script.google.com/home/start" target="_blank" rel="noopener" style="color: var(--color-olive-dark); font-weight: 700;">script.google.com</a> → <strong>Nuevo proyecto</strong>, pega el código y guarda.</li>
-          <li>Haz clic en <strong>Implementar → Nueva implementación → Aplicación web</strong>. En <em>Ejecutar como</em> elige <strong>“Yo”</strong> y en <em>Quién tiene acceso</em> elige <strong>“Cualquier persona”</strong>.</li>
-          <li>Copia la URL que te da Google (termina en <code>/exec</code>) y pégala aquí abajo:</li>
-        </ol>
-
-        <button type="button" class="btn-camera-secondary" onclick="copyGoogleAppsScriptCode()"
-          style="width: 100%; margin-top: 10px; justify-content: center;">
-          📋 Copiar Código Google Apps Script (Con tu Carpeta Lista)
-        </button>
-      </div>
-
-      <!-- Input para Guardar la URL del Puente en la Nube -->
-      <div class="input-field-group" style="margin-bottom: 12px;">
-        <label for="driveScriptUrlInput">🔗 URL de tu Aplicación Web de Google Apps Script (<code>.../exec</code>):</label>
-        <input type="url" id="driveScriptUrlInput" class="wedding-input" style="font-size: 0.8rem;"
-          placeholder="https://script.google.com/macros/s/.../exec">
-      </div>
-
-      <div style="display: flex; flex-direction: column; gap: 8px;">
-        <button type="button" class="btn-camera-primary" onclick="saveDriveScriptUrlConfig()" style="padding: 13px 16px; font-size: 0.9rem;">
-          💾 Guardar Conexión Google Drive para Todos los Invitados
-        </button>
-
-        <button type="button" class="btn-camera-secondary" id="btnSyncAllToDrive" onclick="syncAllCloudPhotosToDrive()"
-          style="width: 100%; justify-content: center;">
-          ☁️ Sincronizar todas las fotos existentes hacia Google Drive
-        </button>
-      </div>
-    </div>
-  </div>
-
-  <!-- ==========================================================================
-       LIGHTBOX PANTALLA COMPLETA PARA VER Y DESCARGAR FOTOS
+       LIGHTBOX PANTALLA COMPLETA PARA VER Y DESCARGAR FOTOS DEL MURAL
        ========================================================================== -->
   <div class="lightbox-overlay" id="lightboxOverlay" onclick="closePhotoLightbox(event)">
     <button type="button" class="modal-close-btn" onclick="closePhotoLightbox()"
@@ -490,7 +331,7 @@
       <div class="lightbox-text" id="lightboxCaption"></div>
       <div style="margin-top: 12px; display: flex; gap: 10px; justify-content: center;">
         <a href="#" id="lightboxDownloadBtn" download class="pill-utility-btn" onclick="event.stopPropagation()">
-          ⬇️ Descargar Foto Original
+          ⬇️ Descargar Foto
         </a>
       </div>
     </div>
@@ -498,11 +339,10 @@
 
   <!-- Notificación Toast -->
   <div class="wedding-toast" id="weddingToast">
-    <span id="toastMessage">✓ ¡Foto guardada con éxito!</span>
+    <span id="toastMessage">✓ ¡Foto guardada automáticamente!</span>
   </div>
 
   <script src="app.js"></script>
 </body>
 
 </html>
-

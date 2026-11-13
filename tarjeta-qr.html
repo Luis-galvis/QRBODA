@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tarjeta QR para Mesas • Boda Fernando & Luisa Fernanda</title>
+  <link rel="icon" type="image/jpeg" href="assets/monograma_boda.jpg">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Cinzel:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Montserrat:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet">
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+  <link rel="stylesheet" href="style.css">
+
+  <style>
+    .qr-print-toolbar {
+      width: 100%;
+      max-width: 640px;
+      background: rgba(253, 252, 249, 0.96);
+      border: 1.5px solid var(--color-gold-primary);
+      border-radius: 16px;
+      padding: 18px 20px;
+      margin: 20px auto 16px;
+      box-shadow: var(--shadow-luxury);
+      z-index: 20;
+      position: relative;
+    }
+
+    .poster-sheet {
+      width: 100%;
+      max-width: 520px;
+      margin: 0 auto 40px;
+      background-color: #fdfcf9;
+      background-image: url('assets/card_background.jpg');
+      background-size: cover;
+      background-position: center;
+      border: 2px solid var(--color-gold-primary);
+      border-radius: 18px;
+      padding: 42px 28px;
+      text-align: center;
+      position: relative;
+      box-shadow: var(--shadow-deep);
+      z-index: 10;
+    }
+
+    .poster-sheet::before {
+      content: '';
+      position: absolute;
+      inset: 12px;
+      border: 1.5px solid rgba(197, 160, 89, 0.55);
+      border-radius: 12px;
+      pointer-events: none;
+    }
+
+    .poster-sheet::after {
+      content: '';
+      position: absolute;
+      inset: 17px;
+      border: 1px dashed rgba(197, 160, 89, 0.4);
+      border-radius: 9px;
+      pointer-events: none;
+    }
+
+    .poster-qr-wrap {
+      display: inline-flex;
+      flex-direction: column;
+      align-items: center;
+      background: #ffffff;
+      padding: 22px;
+      border-radius: 20px;
+      border: 2.5px solid var(--color-gold-primary);
+      box-shadow: 0 14px 36px rgba(45, 55, 35, 0.15);
+      margin: 18px auto;
+      position: relative;
+    }
+
+    .poster-steps {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      margin: 18px 0;
+      text-align: center;
+    }
+
+    .poster-step-card {
+      background: rgba(255, 255, 255, 0.86);
+      border: 1px solid rgba(197, 160, 89, 0.45);
+      border-radius: 12px;
+      padding: 10px 8px;
+    }
+
+    .poster-step-num {
+      font-family: var(--font-display);
+      font-size: 0.72rem;
+      color: var(--color-gold-deep);
+      font-weight: 700;
+      margin-bottom: 3px;
+    }
+
+    .poster-step-text {
+      font-size: 0.74rem;
+      color: var(--color-olive-dark);
+      font-weight: 600;
+      line-height: 1.3;
+    }
+
+    @media print {
+      body {
+        background: #ffffff !important;
+      }
+      .qr-print-toolbar,
+      #ambient-particles {
+        display: none !important;
+      }
+      .poster-sheet {
+        box-shadow: none !important;
+        margin: 0 auto !important;
+        max-width: 100% !important;
+        page-break-inside: avoid;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div id="ambient-particles"></div>
+
+  <!-- Barra de Control (No aparece al imprimir) -->
+  <section class="qr-print-toolbar">
+    <div style="display: flex; align-items: center; justify-content: space-between; gap: 10px; margin-bottom: 12px; flex-wrap: wrap;">
+      <div>
+        <span class="section-label" style="margin-bottom: 2px;">Generador Oficial de QR para Mesas</span>
+        <h2 style="font-family: var(--font-serif); font-size: 1.45rem; color: var(--color-olive-dark);">
+          Tarjeta QR Lista para Imprimir • Fernando & Luisa
+        </h2>
+      </div>
+      <a href="index.html" class="pill-utility-btn">← Volver a la Cámara de la Boda</a>
+    </div>
+
+    <div class="input-field-group" style="margin-bottom: 12px;">
+      <label for="posterUrlInput">🔗 Enlace de tu página en Vercel (el QR redirige automáticamente aquí):</label>
+      <input type="url" id="posterUrlInput" class="wedding-input"
+        placeholder="https://fotos-boda-fernando-luisa.vercel.app" oninput="updatePosterQR()">
+      <small style="display: block; font-size: 0.72rem; color: var(--color-text-muted); margin-top: 4px;">
+        💡 Cuando abras esta página desde tu enlace de Vercel, este campo tomará automáticamente tu URL oficial de Vercel.
+      </small>
+    </div>
+
+    <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+      <button type="button" class="btn-camera-primary" onclick="window.print()" style="flex: 1; padding: 12px 16px; font-size: 0.88rem;">
+        🖨️ Imprimir / Guardar como PDF para las Mesas
+      </button>
+      <button type="button" class="btn-camera-secondary" onclick="downloadPosterPNG()" style="flex: 1; justify-content: center;">
+        🖼️ Descargar Tarjeta en Imagen PNG HD
+      </button>
+    </div>
+  </section>
+
+  <!-- TARJETA IMPRIMIBLE DE LUJO (DISEÑO TARJETA MADRE) -->
+  <article class="poster-sheet" id="posterSheet">
+    <div class="corner-ornament corner-tl"></div>
+    <div class="corner-ornament corner-tr"></div>
+    <div class="corner-ornament corner-bl"></div>
+    <div class="corner-ornament corner-br"></div>
+
+    <div class="monogram-emblem" style="width: 110px; height: 110px; margin-bottom: 12px;">
+      <img src="assets/monograma_boda.jpg" alt="Monograma F & L" class="monogram-img">
+    </div>
+
+    <div class="wedding-subtitle">Álbum Fotográfico Oficial</div>
+    <h1 class="couple-names" style="font-size: 2.3rem; margin-bottom: 6px;">
+      <span>Fernando</span>
+      <span class="ampersand" style="font-size: 2.5rem;">&</span>
+      <span>Luisa Fernanda</span>
+    </h1>
+
+    <div class="wedding-date-pill" style="margin-bottom: 10px;">
+      <span>🌿 Sábado, 14 de Noviembre de 2026 • Ibagué, Tolima</span>
+    </div>
+
+    <p class="romantic-quote" style="font-size: 1rem; margin-bottom: 6px;">
+      “Ayúdanos a atesorar cada instante de nuestra boda desde tu celular”
+    </p>
+
+    <!-- Código QR Central -->
+    <div class="poster-qr-wrap">
+      <div id="posterQrBox"></div>
+      <div style="margin-top: 10px; font-family: var(--font-display); font-size: 0.68rem; letter-spacing: 2px; color: var(--color-gold-deep); font-weight: 700;">
+        ESCANEA CON TU CÁMARA
+      </div>
+    </div>
+
+    <h2 style="font-family: var(--font-serif); font-size: 1.65rem; color: var(--color-olive-dark); margin-bottom: 4px;">
+      📸 ¡Comparte tus Fotos con Nosotros!
+    </h2>
+
+    <!-- 3 Pasos Sencillos para los Invitados -->
+    <div class="poster-steps">
+      <div class="poster-step-card">
+        <div class="poster-step-num">PASO 1</div>
+        <div class="poster-step-text">📱 Escanea este código QR con tu celular</div>
+      </div>
+      <div class="poster-step-card">
+        <div class="poster-step-num">PASO 2</div>
+        <div class="poster-step-text">📸 Toma una foto en vivo o elige de tu galería</div>
+      </div>
+      <div class="poster-step-card">
+        <div class="poster-step-num">PASO 3</div>
+        <div class="poster-step-text">☁️ Quedará guardada en nuestro Google Drive</div>
+      </div>
+    </div>
+
+    <div class="nuestros-amores-mini" style="margin-top: 6px;">
+      <span>🤍</span>
+      <span>Con el amor de nuestro hijo y nuestro fiel compañero</span>
+      <img src="assets/dog_paws.png" alt="Huellitas">
+    </div>
+  </article>
+
+  <!-- Contenedor oculto para reutilizar el generador PNG de app.js -->
+  <div id="qrcodeContainer" style="display: none;"></div>
+  <div class="wedding-toast" id="weddingToast"><span id="toastMessage"></span></div>
+
+  <script src="app.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const input = document.getElementById('posterUrlInput');
+      let defaultUrl = localStorage.getItem('wedding_custom_qr_url') || '';
+      if (!defaultUrl) {
+        if (window.location.protocol.startsWith('http')) {
+          defaultUrl = window.location.origin + window.location.pathname.replace(/tarjeta-qr\.html$/, '');
+        } else {
+          defaultUrl = 'https://fotos-boda-fernando-luisa.vercel.app';
+        }
+      }
+      input.value = defaultUrl;
+      updatePosterQR();
+    });
+
+    function updatePosterQR() {
+      const url = document.getElementById('posterUrlInput').value.trim() || 'https://fotos-boda-fernando-luisa.vercel.app';
+      localStorage.setItem('wedding_custom_qr_url', url);
+
+      const box = document.getElementById('posterQrBox');
+      box.innerHTML = '';
+      new QRCode(box, {
+        text: url,
+        width: 230,
+        height: 230,
+        colorDark: '#28331e',
+        colorLight: '#ffffff',
+        correctLevel: QRCode.CorrectLevel.H
+      });
+
+      const hiddenBox = document.getElementById('qrcodeContainer');
+      if (hiddenBox) {
+        hiddenBox.innerHTML = '';
+        new QRCode(hiddenBox, {
+          text: url,
+          width: 230,
+          height: 230,
+          colorDark: '#28331e',
+          colorLight: '#ffffff',
+          correctLevel: QRCode.CorrectLevel.H
+        });
+      }
+    }
+
+    function downloadPosterPNG() {
+      if (typeof window.downloadLuxuryQrCardPNG === 'function') {
+        window.downloadLuxuryQrCardPNG();
+      }
+    }
+  </script>
+</body>
+
+</html>
+
